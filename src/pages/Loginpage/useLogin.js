@@ -34,5 +34,37 @@ export const useLogin = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  return { login, loading };
+  const register = useCallback(async (values) => {
+    const username = values.target.username.value;
+    const password = values.target.password.value;
+    if (!username) {
+      alert("username oruulna uu");
+      return;
+    }
+    if (!password) {
+      alert("password oruulna uu");
+      return;
+    }
+    setLoading(true);
+    await axios
+      .post("/register", {
+        username: username,
+        password: password,
+      })
+      .then(({ res }) => {
+        if (res.success) {
+          alert("Success");
+          setLoading(false);
+        } else {
+          alert("Failure");
+        }
+      })
+      .catch((err) => {
+        alert(err.message);
+        setLoading(false);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  return { login, register, loading };
 };
