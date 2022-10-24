@@ -5,7 +5,7 @@ import Allpages from "../Allpages";
 
 const App = () => {
   return (
-    <BrowserRouter basename="/dashboard">
+    <BrowserRouter>
       <Routes>
         <Route exact path="*" element={<Allpages />} />
         <Route exact path="/" element={<Loginpage />} />

@@ -6,7 +6,7 @@ import { useLogin } from "./useLogin";
 import { ScaleLoader } from "react-spinners";
 
 const Login = () => {
-  const { login, register, loading } = useLogin();
+  const { login, loading, register } = useLogin();
   const [change, setChange] = useState(false);
 
   return (
